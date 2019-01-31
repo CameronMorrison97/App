@@ -74,36 +74,36 @@
                 <EditText
                     android:layout_marginLeft="15dp"
                     android:layout_marginTop="20dp"
-                    android:textColor="@android:color/white"
-                    android:text="@string/setting3"
                     android:background="@null"
                     android:clickable="false"
                     android:enabled="false"
-                    />
+                    android:text="@string/setting3"
+                    android:textColor="@android:color/white" />
 
-                <CheckBox android:id="@+id/checkbox_cheese"
-                    android:layout_width="wrap_content"
+                <CheckBox
+                    android:id="@+id/checkbox_cheese"
+                    android:layout_width="158dp"
                     android:layout_height="wrap_content"
-                    android:layoutDirection="rtl"/>
+                    android:layoutDirection="rtl" />
             </TableRow>
 
             <TableRow
-                android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_column="3">
 
                 <Button
                     android:id="@+id/Update"
-                    android:text="Update"
+                    android:layout_marginLeft="13dp"
                     android:layout_marginTop="50dp"
-                    android:layout_marginLeft="13dp"></Button>
+                    android:text="Update"></Button>
 
 
                 <Button
                     android:id="@+id/Cancel"
-                    android:text="Cancel"
+                    android:layout_marginLeft="100dp"
                     android:layout_marginTop="50dp"
-                    android:layout_marginLeft="100dp"></Button>
+                    android:text="Cancel"></Button>
 
             </TableRow>
 
