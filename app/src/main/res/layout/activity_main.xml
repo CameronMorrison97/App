@@ -6,7 +6,7 @@
     android:layout_height="fill_parent"
     tools:context=".MainActivity">
 
-        
+
         <TableLayout
             android:id="@+id/configLinearVertical"
             android:orientation="vertical"
@@ -17,31 +17,82 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintRight_toRightOf="parent">
-            
+
             <TableRow
-                android:text="Stuff"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:layout_column="3">
 
                 <EditText
-                    android:layout_marginLeft="30dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="20dp"
                     android:textColor="@android:color/white"
                     android:text="@string/setting1"
-                    android:inputType="textCapWords"/>
+                    android:background="@null"
+                    android:clickable="false"
+                    android:enabled="false"
+                    />
+
+                <EditText
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="20dp"
+                    android:textColor="@android:color/white"
+                    android:layout_width="175dp"
+                    android:inputType="text"
+                    />
             </TableRow>
 
             <TableRow
-                android:text="Stuff"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:layout_column="3">
 
                 <EditText
-                    android:layout_height="wrap_content"
-                    android:layout_width="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="20dp"
                     android:textColor="@android:color/white"
-                    android:text="@string/setting1"/>
+                    android:text="@string/setting2"
+                    android:background="@null"
+                    android:clickable="false"
+                    android:enabled="false"
+                    />
+
+                <EditText
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="20dp"
+                    android:textColor="@android:color/white"
+                    android:layout_width="175dp"
+                    android:inputType="text"
+                    />
+            </TableRow>
+
+            <TableRow
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_column="3">
+
+                <EditText
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="20dp"
+                    android:textColor="@android:color/white"
+                    android:text="@string/setting3"
+                    android:background="@null"
+                    android:clickable="false"
+                    android:enabled="false"
+                    />
+
+                <CheckBox android:id="@+id/checkbox_cheese"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layoutDirection="rtl"/>
+            </TableRow>
+
+            <TableRow
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_column="3">
+
+
             </TableRow>
 
         </TableLayout>
