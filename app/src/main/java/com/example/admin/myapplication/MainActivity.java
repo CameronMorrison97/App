@@ -28,8 +28,8 @@ public class MainActivity extends AppCompatActivity {
     public void requestPermissions(){
         int requestCode = 0;
         String[] Permissions = new String[2];
-        Permissions[0] = "android.permission.WRITE_EXTERNAL_STORAGE";
-        Permissions[1] = "android.permission.READ_EXTERNAL_STORAGE";
+        Permissions[0] = "android.permission.READ_EXTERNAL_STORAGE";
+        //Permissions[1] = "android.permission.READ_EXTERNAL_STORAGE";
         ActivityCompat.requestPermissions(MainActivity.this, Permissions,requestCode);
     }
 
@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
     *   Queries the file system to run ls on the android device.
     * */
     public void queryFileSystem() throws IOException {
-        if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+        if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE)
                 != PackageManager.PERMISSION_GRANTED) {
             // Permission is not granted
             System.out.println("Permissions Denied READ");
@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
             BufferedReader br = new BufferedReader(
                     new InputStreamReader(p.getInputStream()));
             while ((s = br.readLine()) != null)
-                Log.d("line" + lineNum++, "line: " + s);
+                System.out.println("line" + lineNum++ + "line: " + s);
             p.waitFor();
             System.out.println ("exit: " + p.exitValue());
             p.destroy();
