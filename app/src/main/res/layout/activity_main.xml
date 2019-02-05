@@ -69,11 +69,13 @@
             <TableRow
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
-                android:layout_column="3">
+                android:layout_column="3"
+                android:paddingTop="10dp"
+                android:paddingBottom="75dp">
 
                 <EditText
                     android:layout_marginLeft="15dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="0dp"
                     android:background="@null"
                     android:clickable="false"
                     android:enabled="false"
@@ -95,14 +97,12 @@
                 <Button
                     android:id="@+id/Update"
                     android:layout_marginLeft="13dp"
-                    android:layout_marginTop="50dp"
                     android:text="Update"></Button>
 
 
                 <Button
                     android:id="@+id/Cancel"
                     android:layout_marginLeft="100dp"
-                    android:layout_marginTop="50dp"
                     android:text="Cancel"></Button>
 
             </TableRow>
