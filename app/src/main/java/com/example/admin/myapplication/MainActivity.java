@@ -5,7 +5,12 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.ColorFilter;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.DrawableWrapper;
 import android.media.audiofx.Visualizer;
+import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -16,6 +21,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
@@ -29,57 +35,8 @@ public class MainActivity extends AppCompatActivity {
         int requestCode = 0;
         String[] Permissions = new String[2];
         Permissions[0] = "android.permission.READ_EXTERNAL_STORAGE";
-        //Permissions[1] = "android.permission.READ_EXTERNAL_STORAGE";
+        Permissions[1] = "android.permission.READ_EXTERNAL_STORAGE";
         ActivityCompat.requestPermissions(MainActivity.this, Permissions,requestCode);
-    }
-
-    /*
-    *   Queries the file system to run ls on the android device.
-    * */
-    public void queryFileSystem() throws IOException {
-        if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE)
-                != PackageManager.PERMISSION_GRANTED) {
-            // Permission is not granted
-            System.out.println("Permissions Denied READ");
-
-            return;
-        }
-
-        System.out.println("Permissions Granted READ");
-
-        String s;
-        Process p;
-        int lineNum = 0;
-        try {
-            p = Runtime.getRuntime().exec("ls");
-            BufferedReader br = new BufferedReader(
-                    new InputStreamReader(p.getInputStream()));
-            while ((s = br.readLine()) != null)
-                System.out.println("line" + lineNum++ + "line: " + s);
-            p.waitFor();
-            System.out.println ("exit: " + p.exitValue());
-            p.destroy();
-        } catch (Exception e) {}
-
-    }
-
-    /* Code 'borrowed' form JustinMorris. On Stack Overflow: https://stackoverflow.com/questions/2661536/how-to-programmatically-take-a-screenshot*/
-    /* Returns the current view as a bitmap image. Can return null if the permissions have been denied.
-    * In this case the background for the config screen will just be a single colour.*/
-    public Bitmap screenShot(View view) {
-        if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                != PackageManager.PERMISSION_GRANTED) {
-            // Permission is not granted
-            System.out.println("Permissions Denied WRITE");
-
-            return null;
-        }
-            System.out.println("Permissions Granted WRITE");
-            Bitmap bitmap = Bitmap.createBitmap(view.getWidth(),
-                    view.getHeight(), Bitmap.Config.ARGB_8888);
-            Canvas canvas = new Canvas(bitmap);
-            view.draw(canvas);
-            return bitmap;
     }
 
 
@@ -93,18 +50,12 @@ public class MainActivity extends AppCompatActivity {
 
         final Button Cancel = (Button) findViewById(R.id.Cancel);
         final Button Update = (Button) findViewById(R.id.Update);
+        final ConstraintLayout constraint = (ConstraintLayout) findViewById(R.id.Constraint);
 
         Cancel.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View view) {
-                Bitmap btmap = screenShot(view);
-
-                try {
-                    queryFileSystem();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
 
                 Intent intent = new Intent(MainActivity.this, AnotherActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -116,6 +67,10 @@ public class MainActivity extends AppCompatActivity {
         Update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                // set the background
+                getWindow().setBackgroundDrawableResource(R.drawable.download);
+
                 Toast toast = Toast.makeText(getApplicationContext(), "Updated settings!", Toast.LENGTH_LONG);
                 toast.show();
             }

@@ -19,6 +19,9 @@ public class AnotherActivity extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // Take the screenshot
+                ImageHelper.screenShot(view);
+
                 Intent intent = new Intent(AnotherActivity.this, MainActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 finish();
